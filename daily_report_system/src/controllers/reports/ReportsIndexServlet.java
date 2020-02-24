@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Employee;
 import models.Favorite;
 import models.Report;
 import utils.DBUtil;
@@ -37,6 +38,8 @@ public class ReportsIndexServlet extends HttpServlet {
         // TODO Auto-generated method stub
         EntityManager em = DBUtil.createEntityManager();
 
+        Employee login_employee = (Employee)request.getSession().getAttribute("login_employee");
+
 
         int page;
         try {
@@ -54,6 +57,7 @@ public class ReportsIndexServlet extends HttpServlet {
                 .getSingleResult();
 
         List<Favorite> favorites = em.createNamedQuery("getAllFavorites", Favorite.class)
+                .setParameter("employee", login_employee)
                 .getResultList();
 
 

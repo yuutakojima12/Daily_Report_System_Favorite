@@ -51,10 +51,10 @@
                     </tr>
                     <c:forEach var="favorite" items="${favorites}" varStatus="status">
                         <tr class="row${status.count % 2}">
-                            <td class="favorite_report_name"><c:out value="${favorite.employee.name}" /></td>
+                            <td class="favorite_report_name"><c:out value="${favorite.report.employee.name}" /></td>
                             <td class="favorite_added_date"><fmt:formatDate value='${favorite.added_at}' pattern='yyyy-MM-dd' /></td>
                             <td class="favorite_report_title">${favorite.report.title}</td>
-                            <td class="favorite_report_action"><a href="<c:url value='/reports/show?id=${favorite.report.id}' />">詳細を見る</a></td>
+                            <td class="favorite_report_action"><a href="<c:url value='/reports/showfavorite?id=${favorite.id}' />">詳細を見る</a></td>
                         </tr>
                     </c:forEach>
                 </tbody>

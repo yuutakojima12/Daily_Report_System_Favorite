@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(
             name = "getAllFavorites",
-            query = "SELECT f FROM Favorite AS f ORDER BY f.id DESC"
+            query = "SELECT f FROM Favorite AS f WHERE f.employee = :employee ORDER BY f.id DESC"
             )
 })
 
