@@ -47,10 +47,17 @@
                 <c:if test="${sessionScope.login_employee.id == report.employee.id}">
                     <p><a href="<c:url value='/reports/edit?id=${report.id}' />">この日報を編集する</a></p>
                 </c:if>
-                <form method="POST" action="<c:url value='/reports/destroy' />">
+                <p><a href="#" onclick="confirmDestroy();">このメッセージを削除する</a></p>
+                <form method="POST" action="${pageContext.request.contextPath}/reports/destroy">
                     <input type="hidden" name="_token" value="${_token}" />
-                    <button type="submit" onclick="alert('お気に入りから削除してよろしいですか？')">お気に入りから削除</button>
                 </form>
+                <script>
+                    function confirmDestroy() {
+                        if(confirm("本当に削除してよろしいですか？")) {
+                            document.forms[0].submit();
+                        }
+                    }
+                </script>
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした。</h2>

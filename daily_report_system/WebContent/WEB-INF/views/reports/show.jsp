@@ -38,10 +38,17 @@
                         </tr>
                 </table>
                 <br>
-                <form method="POST" action="<c:url value='/reports/favorite' />">
+                <p><a href="#" onclick="confirmFavorite();">お気に入りに登録する</a></p>
+                <form method="POST" action="${pageContext.request.contextPath}/reports/favorite">
                     <input type="hidden" name="_token" value="${_token}" />
-                    <button type="submit" onclick="alert('お気に入りに登録してよろしいですか？')">お気に入りに登録</button>
                 </form>
+                <script>
+                    function confirmFavorite() {
+                        if(confirm("お気に入りに登録してよろしいですか？")) {
+                            document.forms[0].submit();
+                        }
+                    }
+                </script>
                 <c:if test="${sessionScope.login_employee.id == report.employee.id}">
                 <p><a href="<c:url value='/reports/edit?id=${report.id}' />">この日報を編集する</a></p>
                 </c:if>
